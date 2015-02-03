@@ -1,0 +1,24 @@
+{
+    "name":         "alcalyn/js-vars",
+    "license":      "MIT",
+    "type":         "library",
+    "description":  "Class to contains variables, routes and translations to pass to javascript. Use with Symfony components.",
+    "homepage":     "https://github.com/alcalyn/js-vars",
+    "keywords":     ["translation", "i18n", "routing", "javascript", "service"],
+    "authors": [
+        {
+            "name": "Julien Maulny",
+            "email": "doubjulien@hotmail.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/translation": "~2.1",
+        "symfony/routing": "~2.1"
+    },
+    "autoload": {
+        "psr-0": { "Alcalyn\\JsVars": "" }
+    },
+    "target-dir": "Alcalyn/JsVars"
+}
