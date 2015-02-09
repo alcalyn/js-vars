@@ -1,0 +1,7 @@
+services:
+    # Service declaration into symfony2 with translator and router
+    acme.js_vars:
+        class: Alcalyn\JsVars\JsVars
+        calls:
+            - [ enableTranslator, [ @translator ]]
+            - [ enableRouter, [ @router ]]

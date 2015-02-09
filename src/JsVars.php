@@ -8,7 +8,7 @@
 namespace Alcalyn\JsVars;
 
 use Symfony\Component\Translation\TranslatorInterface;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Alcalyn\JsVars\Exception\JsVarsException;
 
 /**
@@ -37,7 +37,7 @@ class JsVars
     private $translations;
 
     /**
-     * @var RouterInterface
+     * @var UrlGeneratorInterface
      */
     private $router;
 
@@ -106,7 +106,7 @@ class JsVars
     }
 
     /**
-     * Enable translator so it can pass translated strings to js
+     * Inject translator so it can pass translated strings to js
      *
      * @param TranslatorInterface $translator
      *
@@ -150,13 +150,13 @@ class JsVars
     }
 
     /**
-     * Enable router so it can pass url to js
+     * Inject an url generator to pass urls to js
      *
-     * @param RouterInterface $router
+     * @param UrlGeneratorInterface $router
      *
      * @return JsVars
      */
-    public function enableRouter(RouterInterface $router)
+    public function enableRouter(UrlGeneratorInterface $router)
     {
         $this->router = $router;
         $this->routes = array();
@@ -168,18 +168,19 @@ class JsVars
      * Provide an url to js
      *
      * @param string $name the name of the route
+     * @param array $params to use in route
      *
      * @return JsVars
      *
      * @throws JsVarsException if router is not enabled
      */
-    public function addRoute($name)
+    public function addRoute($name, array $params = array())
     {
         if (null === $this->router) {
             throw new JsVarsException('Router must be enabled to use addRoute()');
         }
 
-        $this->routes[$name] = $this->router->generate($name);
+        $this->routes[$name] = $this->router->generate($name, $params, UrlGeneratorInterface::ABSOLUTE_URL);
 
         return $this;
     }
