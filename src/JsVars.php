@@ -116,6 +116,7 @@ class JsVars
     {
         $this->translator = $translator;
         $this->translations = array();
+        $this->_locale = $translator->getLocale();
 
         return $this;
     }
