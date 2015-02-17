@@ -150,6 +150,14 @@ class JsVars
     }
 
     /**
+     * @return boolean
+     */
+    public function isTranslatorEnabled()
+    {
+        return null !== $this->translator;
+    }
+
+    /**
      * Inject an url generator to pass urls to js
      *
      * @param UrlGeneratorInterface $router
@@ -191,5 +199,13 @@ class JsVars
     public function getRoutes()
     {
         return $this->routes;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isRouterEnabled()
+    {
+        return null !== $this->router;
     }
 }

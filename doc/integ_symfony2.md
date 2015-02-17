@@ -30,9 +30,13 @@ twig:
 ``` twig
 <div
     id="js-vars"
-    data-variables='{{ js_vars.variables|json_decode|raw }}'
-    data-translations='{{ js_vars.translations|json_encode|raw }}'
-    data-routes='{{ js_vars.routes|json_encode|raw }}'
+    data-variables="{{ js_vars.variables|json_encode|raw|replace('"', '\"') }}"
+    {% if js_vars.translatorEnabled %}
+        data-translations="{{ js_vars.translations|json_encode|raw|replace('"', '\"') }}"
+    {% endif %}
+    {% if js_vars.routerEnabled %}
+        data-routes="{{ js_vars.routes|json_encode|raw|replace('"', '\"') }}"
+    {% endif %}
 ></div>
 ```
 
