@@ -5,3 +5,10 @@ services:
         calls:
             - [ enableTranslator, [ @translator ]]
             - [ enableRouter, [ @router ]]
+
+    # Listener declaration into Symfony2 to declare global variables to pass to all views
+    acme.listener.js_vars_initialize:
+        class: Acme\AppBundle\Listener\JsVarsInitializeListener
+        arguments: [ @acme.js_vars, %kernel.debug% ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
