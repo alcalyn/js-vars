@@ -18,7 +18,7 @@
         "symfony/routing": "~2.1"
     },
     "autoload": {
-        "psr-0": { "Alcalyn\\JsVars": "src" }
+        "psr-0": { "Alcalyn\\JsVars": "" }
     },
     "target-dir": "Alcalyn/JsVars"
 }
