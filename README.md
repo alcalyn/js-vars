@@ -19,7 +19,9 @@ Using composer:
 
 ## Usage
 
-This class can be used as service (on Symfony or Silex) to easily pass variables to Javascript.
+This class can be used as service (on Symfony or Silex)
+to easily pass variables to Javascript
+from controllers, or from another services.
 
 Coupled to symfony/translation or symfony/routing, you can pass translations or urls.
 
